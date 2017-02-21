@@ -1,0 +1,12 @@
+&USERPAR
+ UPRM_PRB =         100       ,
+ L2FREQ   =         5000      ,
+ FIXGEOM  =         0         ,
+ NEW_DT   =         0E-4    ,
+ /
+&STATS
+ STAT_COMP     =     1000000000   ,
+ STAT_OUTP     =     1000000000    ,
+ STAT_IFSTPTS = F,     
+ /
+

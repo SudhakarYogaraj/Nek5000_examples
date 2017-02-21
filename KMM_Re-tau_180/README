@@ -1,0 +1,10 @@
+Contains input files to simulate DNS of channel flow at Re_tau=180. All details are taken from the following paper.
+
+John Kim,  Parviz Moin, and Robert Moser, Turbulence statistics in fully developed channel flow at low Reynolds number, Journal of Fluid Mechanics,
+DOI: https://doi.org/10.1017/S0022112087000892
+
+Works with version number 1143 of Nek5000.
+To modify the averaging procedure, in kmm.upar file change the following
+
+ STAT_COMP --- Once in these number of iterations, averaging is computed
+ STAT_OUTP --- Once in these number of iterations, averaging files are written

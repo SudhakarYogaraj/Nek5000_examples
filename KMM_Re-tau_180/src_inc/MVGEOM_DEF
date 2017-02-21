@@ -1,0 +1,5 @@
+!     missing definitions in MVGEOM
+      real WX, WY, WZ
+      real WXLAG, WYLAG, WZLAG
+      real W1MASK, W2MASK, W3MASK, WMULT
+      real EV1, EV2, EV3

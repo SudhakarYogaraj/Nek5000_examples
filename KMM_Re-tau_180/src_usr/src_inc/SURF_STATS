@@ -1,0 +1,73 @@
+!     Variables speciffic to Surface Statistics
+!----------------------------------------------------------------------
+
+      INTEGER MAXSURFS                            ! Max no. of surfaces                       
+      PARAMETER (MAXSURFS=1)                      ! for Mem Allocation.       
+     
+      INTEGER NSURFS                              ! No. of surfaces
+
+      CHARACTER*3 SURF_DEF(MAXSURFS)              ! Surface boundary definition ('mv ', 'W  ')
+
+      INTEGER SURF_LVAR                           ! No of statistical variables.
+      PARAMETER (SURF_LVAR=7)
+
+      INTEGER SURF_IDIR
+
+      INTEGER SURF_OBJ(2,LELT*6,MAXSURFS)         ! Object: Element no, face no
+      INTEGER SURF_MEMCOUNT(MAXSURFS)             ! No. of elements for each surface.
+      INTEGER SURF_LMAP(LELT,MAXSURFS)            ! Local 2D=>1D mapping.
+      INTEGER SURF_STAT_LMAP(LELT,MAXSURFS)       ! Local mapping from STATS toolbox
+      INTEGER SURF_GMAP(LELT,MAXSURFS)            ! Global numbering (STATS toolbox)
+      INTEGER SURF_LNUM(MAXSURFS)                 ! No. of unique mapped Surface elements.
+      INTEGER SURF_OWN(LELT,MAXSURFS)             ! Element ownership
+      INTEGER SURF_UNQ(MAXSURFS)                  ! No of owned elements by pid
+      INTEGER SURF_TUNQ(MAXSURFS)                 ! No. of Globally unique Elements
+
+      INTEGER SURF_PROCID(LELT)                   ! Proc. to send to
+      INTEGER SURF_PROCPOS(LELT)                  ! Position in send queue.
+      INTEGER SURF_MAXREC                         ! Max receives across all processes.
+      INTEGER SURF_SND_CNT                        ! No of processes to send to.
+      INTEGER SURF_RECNO                          ! No. of Receives
+
+      INTEGER SURF_COMP                           ! Iterations between surface compute
+      INTEGER SURF_AVGITER                        ! Short term averaging period (iterations)
+
+      INTEGER SURF_MAXTSAVES                      ! No of history times to keep in memory
+      PARAMETER (SURF_MAXTSAVES=10)               ! (Also the number of saves before data dump)
+
+      INTEGER SURF_NSAVES                         ! No of history times currently saved
+
+      REAL SURF_AVG_HIST(LX1,LELT,SURF_MAXTSAVES,SURF_LVAR,MAXSURFS)  ! Time history
+      REAL SURF_RAVG(LX1,LELT,SURF_LVAR,MAXSURFS)                     ! Short term running average
+      REAL SURF_ABM1(LX1,LELT,MAXSURFS)           ! Arc Lengths
+      REAL SURF_BM1D(LX1,LY1,LZ1,LELT)            ! Integeration weights    
+      REAL SURF_XM1(LX1,LELT,MAXSURFS)            ! coordinates on the   
+      REAL SURF_YM1(LX1,LELT,MAXSURFS)            ! surface
+      REAL SURF_INTV(3,SURF_LVAR,MAXSURFS)        ! Local Surface integral values 
+      REAL SURF_INTV_HIST(SURF_MAXTSAVES,3,SURF_LVAR,MAXSURFS) ! Global Surface integral values time history 
+
+      REAL SURF_TSTART                            ! Start time for accumulation
+      REAL SURF_ATIME                             ! Accumulation time
+      REAL SURF_TSTAMP(SURF_MAXTSAVES)            ! Time stamps of the saves
+
+      LOGICAL SURF_INI
+
+!----------  common block section
+
+      COMMON /SURFi/ NSURFS, SURF_IDIR, SURF_MAXREC, SURF_RECNO, 
+     $    SURF_SND_CNT, SURF_COMP, SURF_AVGITER, SURF_NSAVES
+
+      COMMON /SURFiv/ SURF_OBJ, SURF_MEMCOUNT, SURF_LMAP, 
+     $    SURF_STAT_LMAP, SURF_GMAP, SURF_LNUM, SURF_OWN,
+     $    SURF_UNQ, SURF_TUNQ, SURF_PROCID, SURF_PROCPOS
+
+      COMMON /SURFr/ SURF_TSTART,SURF_ATIME
+
+      COMMON /SURFrv/ SURF_AVG_HIST, SURF_RAVG, SURF_TSTAMP,
+     $    SURF_ABM1, SURF_BM1D, SURF_XM1, SURF_YM1, 
+     $    SURF_INTV_HIST, SURF_INTV 
+
+      COMMON /SURFcv/ SURF_DEF
+
+      COMMON /SURFl/ SURF_INI
+

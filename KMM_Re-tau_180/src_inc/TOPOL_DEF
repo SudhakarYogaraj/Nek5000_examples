@@ -1,0 +1,3 @@
+!     missing definitions in TOPOL
+      integer NCMP
+      integer IEDGE ,IEDGEF ,ICEDG ,IEDGFC ,ICFACE , INDX, INVEDG
